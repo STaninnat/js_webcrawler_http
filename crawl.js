@@ -1,4 +1,14 @@
-function normalizeURL(urlString){
+const {JSDOM} = require('jsdom')
+
+function getURLsFromHTML(htmlBody, baseURL) {
+    const urls = []
+    const dom = new JSDOM(htmlBody)
+    return urls
+}
+
+
+
+function normalizeURL(urlString) {
     const urlObj = new URL(urlString)
     const hostPath = `${urlObj.hostname}${urlObj.pathname}`
     if (hostPath.length > 0 && hostPath.slice(-1) === '/'){
@@ -7,4 +17,4 @@ function normalizeURL(urlString){
     return hostPath
 }
 
-module.exports = {normalizeURL}
+module.exports = {normalizeURL, getURLsFromHTML}
